@@ -539,7 +539,7 @@ CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
 
 ALTER TABLE talentos.posts
 ADD CONSTRAINT cc_posts_status
-CHECK (status IN ('Ativo', 'Inativo'));
+CHECK (status IN ('ATIVO', 'INATIVO'));
 
 ------------Fim das checagem da tabela posts------------
 
@@ -548,7 +548,7 @@ CHECK (status IN ('Ativo', 'Inativo'));
 
 ALTER TABLE talentos.eventos
 ADD CONSTRAINT cc_eventos_status
-CHECK (status IN ('Ativo', 'Inativo'));
+CHECK (status IN ('ATIVO', 'INATIVO'));
 
 ------------Fim das checagem da tabela eventos------------
 
@@ -557,7 +557,7 @@ CHECK (status IN ('Ativo', 'Inativo'));
 
 ALTER TABLE talentos.talentos
 ADD CONSTRAINT cc_talentos_status
-CHECK (status IN ('Ativo', 'Inativo'));
+CHECK (status IN ('ATIVO', 'INATIVO'));
 
 ------------Fim das checagem da tabela talentos------------
 
@@ -566,7 +566,7 @@ CHECK (status IN ('Ativo', 'Inativo'));
 
 ALTER TABLE talentos.grupos
 ADD CONSTRAINT cc_grupos_status
-CHECK (status IN ('Ativo', 'Inativo'));
+CHECK (status IN ('ATIVO', 'INATIVO'));
 
 ------------Fim das checagem da tabela grupos------------
 
