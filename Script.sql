@@ -257,14 +257,6 @@ COMMENT ON COLUMN grupos.codigo_adm               IS 'Código de usuario adminis
 
 -------------Fim dos comentarios-------------
 
-----------------Constraints----------------
-
-ALTER TABLE grupos
-ADD CONSTRAINT cc_grupos_status
-CHECK (status in ('Ativo', 'Inativo'))
-
-----------------Fim das constraints----------------
-
 ------------Fim da tabela grupos------------
 
 
@@ -518,17 +510,17 @@ NOT DEFERRABLE;
 
 ------------Checagem tabela sugestoes------------
 
-ALTER TABLE talentos.sugestoes
+ALTER TABLE sugestoes
 ADD CONSTRAINT cc_sugestao_tipo_de_sugestao
 CHECK (tipo_de_sugestao IN ('EVENTO', 'TALENTO', 'GRUPO'));
 
 
-ALTER TABLE talentos.sugestoes
+ALTER TABLE sugestoes
 ADD CONSTRAINT cc_status_sugestao
 CHECK (status IN ('IMPLEMENTADO', 'NAO-IMPLEMENTADO'));
 
-ALTER TABLE talentos.sugestoes 
-ADD CONSTRAINT cc_sugestoes_email
+ALTER TABLE email_colaborador 
+ADD CONSTRAINT cc__email_colaborador__email
 CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
 
 
@@ -537,7 +529,7 @@ CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
 
 ------------Checagem tabela posts------------
 
-ALTER TABLE talentos.posts
+ALTER TABLE posts
 ADD CONSTRAINT cc_posts_status
 CHECK (status IN ('ATIVO', 'INATIVO'));
 
@@ -546,7 +538,7 @@ CHECK (status IN ('ATIVO', 'INATIVO'));
 
 ------------Checagem tabela eventos------------
 
-ALTER TABLE talentos.eventos
+ALTER TABLE eventos
 ADD CONSTRAINT cc_eventos_status
 CHECK (status IN ('ATIVO', 'INATIVO'));
 
@@ -555,7 +547,7 @@ CHECK (status IN ('ATIVO', 'INATIVO'));
 
 ------------Checagem tabela talentos------------
 
-ALTER TABLE talentos.talentos
+ALTER TABLE talentos
 ADD CONSTRAINT cc_talentos_status
 CHECK (status IN ('ATIVO', 'INATIVO'));
 
@@ -564,7 +556,7 @@ CHECK (status IN ('ATIVO', 'INATIVO'));
 
 ------------Checagem tabela grupos------------
 
-ALTER TABLE talentos.grupos
+ALTER TABLE grupos
 ADD CONSTRAINT cc_grupos_status
 CHECK (status IN ('ATIVO', 'INATIVO'));
 
@@ -573,7 +565,7 @@ CHECK (status IN ('ATIVO', 'INATIVO'));
 
 ------------Checagem tabela colaboradores------------
 
-ALTER TABLE talentos.colaboradores
+ALTER TABLE colaboradores
 ADD CONSTRAINT cc_colaboradores_tipo_de_usuario
 CHECK (tipo_de_usuario IN('ADMINISTRADOR', 'COMUM'));
 
