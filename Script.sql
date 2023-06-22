@@ -71,6 +71,7 @@ CREATE TABLE colaboradores (
                 cidade                    VARCHAR(355)     NOT NULL,
                 bairro                    VARCHAR(355)     NOT NULL,
                 rua                       VARCHAR(355)     NOT NULL,
+                tipo_de_usuario           VARCHAR(14)      NOT NULL,
                 CONSTRAINT pk_colaboradores PRIMARY KEY (id_funcionario)
 );
 
@@ -306,24 +307,6 @@ COMMENT ON COLUMN usuarios_grupos.id_funcionario IS 'Codigo do funcionario.';
 ------------Fim da tabela usuarios_grupos------------
 
 
--------------Tabela usuarios_comuns-------------
-
-CREATE TABLE usuarios_comuns (
-                codigo_comum             NUMERIC             NOT NULL,
-                id_funcionario           NUMERIC(8)          NOT NULL,
-                CONSTRAINT pk_usuarios_comuns PRIMARY KEY (codigo_comum)
-);
-
--------------Comentarios-------------
-
-COMMENT ON COLUMN usuarios_comuns.codigo_comum      IS 'Codigo de usuario comum.';
-COMMENT ON COLUMN usuarios_comuns.id_funcionario    IS 'Codigo do funcionario.';
-
--------------Fim dos comentarios-------------
-
-------------Fim da tabela usuarios_comuns------------
-
-
 -------------Tabela sugestoes-------------
 CREATE TABLE sugestoes (
                 codigo_sugestao          NUMERIC(8)         NOT NULL,
@@ -331,6 +314,7 @@ CREATE TABLE sugestoes (
                 mensagem                 VARCHAR(455)       NOT NULL,
                 codigo_comum             NUMERIC            NOT NULL,
                 status                   VARCHAR(17)        NOT NULL,
+                id_funcionario           NUMERIC(8)         NOT NULL,
                 CONSTRAINT pk_sugestoes PRIMARY KEY (codigo_sugestao)
 );
 
@@ -409,9 +393,8 @@ NOT DEFERRABLE;
 ------------Fim------------
 
 
-------------------------Relacionamento usuarios_comuns -> colaboradores------------
-
-ALTER TABLE usuarios_comuns ADD CONSTRAINT colaboradores_usuarios_comuns_fk
+------------Relacionamento administradores -> colaboradores------------
+ALTER TABLE administradores ADD CONSTRAINT colaboradores_administradores_fk
 FOREIGN KEY (id_funcionario)
 REFERENCES colaboradores (id_funcionario)
 ON DELETE NO ACTION
@@ -421,8 +404,8 @@ NOT DEFERRABLE;
 ------------Fim------------
 
 
-------------Relacionamento administradores -> colaboradores------------
-ALTER TABLE administradores ADD CONSTRAINT colaboradores_administradores_fk
+------------Relacionamento sugestões -> colaboradores------------
+ALTER TABLE sugestoes ADD CONSTRAINT colaboradores_sugestoes_fk
 FOREIGN KEY (id_funcionario)
 REFERENCES colaboradores (id_funcionario)
 ON DELETE NO ACTION
@@ -542,18 +525,6 @@ NOT DEFERRABLE;
 ALTER TABLE usuarios_grupos ADD CONSTRAINT grupos_usuarios_grupos_fk
 FOREIGN KEY (codigo_do_grupo)
 REFERENCES grupos (codigo_do_grupo)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
-NOT DEFERRABLE;
-
-------------Fim------------
-
-
-------------Relacionamento sugestoes -> usuarios_comuns------------
-
-ALTER TABLE sugestoes ADD CONSTRAINT usuarios_comuns_sugestoes_fk
-FOREIGN KEY (codigo_comum)
-REFERENCES usuarios_comuns (codigo_comum)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
