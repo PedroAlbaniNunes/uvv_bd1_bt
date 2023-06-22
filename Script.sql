@@ -115,6 +115,14 @@ COMMENT ON COLUMN posts.foto                       IS 'Foto da postagem.';
 
 -------------Fim dos comentarios-------------
 
+----------------Constraints----------------
+
+ALTER TABLE posts
+ADD CONSTRAINT cc_posts_status
+CHECK (status in ('Ativo', 'Inativo'))
+
+----------------Fim das constraints----------------
+
 ------------Fim da tabela posts------------
 
 
@@ -167,6 +175,14 @@ COMMENT ON COLUMN eventos.codigo_adm               IS 'Código de usuario admini
 
 -------------Fim dos comentarios-------------
 
+----------------Constraints----------------
+
+ALTER TABLE eventos
+ADD CONSTRAINT cc_eventos_status
+CHECK (status in ('Ativo', 'Inativo'))
+
+----------------Fim das constraints----------------
+
 ------------Fim da tabela eventos------------
 
 
@@ -210,6 +226,14 @@ COMMENT ON COLUMN talentos.codigo_adm               IS 'Código de usuario admin
 
 -------------Fim dos comentarios-------------
 
+----------------Constraints----------------
+
+ALTER TABLE talentos
+ADD CONSTRAINT cc_talentos_status
+CHECK (status in ('Ativo', 'Inativo'))
+
+----------------Fim das constraints----------------
+
 ------------Fim da tabela talentos------------
 
 
@@ -252,6 +276,14 @@ COMMENT ON COLUMN grupos.reponsavel_atualizacao   IS 'Responsavel pela ultima at
 COMMENT ON COLUMN grupos.codigo_adm               IS 'Código de usuario administrador.';
 
 -------------Fim dos comentarios-------------
+
+----------------Constraints----------------
+
+ALTER TABLE grupos
+ADD CONSTRAINT cc_grupos_status
+CHECK (status in ('Ativo', 'Inativo'))
+
+----------------Fim das constraints----------------
 
 ------------Fim da tabela grupos------------
 
