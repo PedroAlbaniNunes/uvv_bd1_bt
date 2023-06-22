@@ -527,3 +527,25 @@ ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
 ------------Fim------------
+
+
+------------Checagens------------
+
+
+------------Checagem tabela sugestoes------------
+
+ALTER TABLE talentos.sugestoes
+ADD CONSTRAINT cc_tipo_de_sugestao_sugestao
+CHECK (tipo_de_sugestao IN ('EVENTO', 'TALENTO', 'GRUPO'));
+
+
+ALTER TABLE talentos.sugestoes
+ADD CONSTRAINT cc_status_sugestao
+CHECK (status IN ('IMPLEMENTADO', 'NAO-IMPLEMENTADO'));
+
+ALTER TABLE talentos.sugestoes 
+ADD CONSTRAINT cc_email_sugestoes
+CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
+
+
+------------Fim das checagem da tabela sugestoes------------
